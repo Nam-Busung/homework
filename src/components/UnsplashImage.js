@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import scrap from '../on-img.png'
-import blue from '../blue.png'
+import scrap from '../img/on-img.png'
+import blue from '../img/blue.png'
 import Avatar from 'react-avatar';
 
 const Img = styled.img`

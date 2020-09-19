@@ -1,16 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
+import ic_check from '../img/checked.png';
+import ic_uncheck from '../img/uncheck.png';
 
 const Header = styled.header`
-  max-width: 70rem;
+  max-width: 72rem;
   margin: 2rem auto;
-  text-align: center;
+  margin-bottom: -17px;
 `;
 
-const H1 = styled.h1`
-  font-family: 'Oswald', sans-serif;
-  margin-bottom: 1em;
-`;
+
 
 // const Input = styled.input`
 //   height: 2.5rem;
@@ -37,12 +36,20 @@ const H1 = styled.h1`
 // `;
 
 export const Heading = () => {
+  const [images, setImage] = useState(ic_uncheck);
 
   return (
     <Header>
-      <H1>Unsplash</H1>
-      <p>The internet’s source of freely usable images.</p>
-      <p>Powered by creators everywhere.</p>
+      <a onClick={() => {
+        if (images == ic_uncheck)
+          setImage(ic_check)
+        else
+          setImage(ic_uncheck)
+      }} >
+        <img style={{marginTop:"-3px", cursor: "pointer", position: "absolute", width: "24px", height: "24px"}} src={images}>
+        </img>
+      </a>
+      <p style={{ marginLeft:"31px",fontFamily:"AppleSDGothicNeo-Regular",fontSize:"15px"}}>스크랩 한 것만 보기</p>
       {/* <form>
         <Input type="text" placeholder="Search photos" />
         <Button>Search</Button>

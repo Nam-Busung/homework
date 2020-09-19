@@ -16,11 +16,6 @@ const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
-    
-  }
-
-  body {
-    font-family: sans-serif;
   }
 `;
 const WrapperImages = styled.section`
@@ -54,9 +49,8 @@ function App() {
 
   return (
 
-    <div className="container">
-
-      <GlobalStyle />
+    <div  className="container">
+      <Heading/>
       <InfiniteScroll
         dataLength={images.length}
         next={fetchImages}
@@ -64,6 +58,7 @@ function App() {
 
         loader={<Loader />}
       >
+        
         <WrapperImages>
 
           {
