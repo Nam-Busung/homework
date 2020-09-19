@@ -10,8 +10,7 @@ import { createGlobalStyle } from 'styled-components';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
 import axios from 'axios';
-
-let i=1;
+let i=0;
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -25,12 +24,9 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 const WrapperImages = styled.section`
-  max-width: 71rem;
+  max-width: 75rem;
   margin: 5rem auto;
-  display: grid;
-  grid-gap: 21px;
-  grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
-  grid-auto-rows: 268px;
+
 `;
 
 function App() {
@@ -41,9 +37,10 @@ function App() {
   }, [])
 
   const fetchImages = () => {
-    console.log("hi");
     
     setTimeout(() => {
+      console.log(i);
+
       axios
         .get(`https://bucketplace-coding-test.s3.amazonaws.com/cards/page_${i}.json`)
         .then(res => {
@@ -58,21 +55,22 @@ function App() {
   return (
 
     <div className="container">
-            <Heading />
 
       <GlobalStyle />
       <InfiniteScroll
         dataLength={images.length}
         next={fetchImages}
-        pullDownToRefreshThreshold={5}
-        hasMore={true}
+        hasMore={i<5}
 
         loader={<Loader />}
       >
         <WrapperImages>
+
           {
           images.map(image => (
-            <UnsplashImage url={image.image_url} />
+            <>
+            <UnsplashImage url={image.image_url} profile={image.profile_image_url}/>
+            </>
           ))
           }
         </WrapperImages>
