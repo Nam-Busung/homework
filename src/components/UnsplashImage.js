@@ -9,10 +9,11 @@ const Img = styled.img`
   height: 268px;
   border-radius: 10px;
   margin-left:21px;
-  margin-bottom:76px;
+  margin-bottom:71px;
+  margin-top:0px;
   `;
 
-export const UnsplashImage = ({ url, profile }) => {
+export const UnsplashImage = ({ url, profile,nick }) => {
   const [images, setImage] = useState(scrap);
 
   return (
@@ -31,8 +32,8 @@ export const UnsplashImage = ({ url, profile }) => {
         <img style={{ position: "absolute", width: "32px", height: "32px" }} src={images}>
         </img>
       </a>
-      <Avatar  size="36" style={{position: "absolute",marginLeft:"-268px",marginTop:"-46px"}}  src={profile} />
-
+      <Avatar  size="36" style={{position: "absolute",marginLeft:"-268px",marginTop:"-46px"}}  src={profile} ></Avatar>
+      <text style={{fontFamily:"AppleSDGothicNeo-Bold",fontSize:"15px",position: "absolute",marginLeft:"-222px",marginTop:"-36px"}}>{nick}</text>
 
     </>
   )

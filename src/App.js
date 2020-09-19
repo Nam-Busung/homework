@@ -69,7 +69,7 @@ function App() {
           {
           images.map(image => (
             <>
-            <UnsplashImage url={image.image_url} profile={image.profile_image_url}/>
+            <UnsplashImage url={image.image_url} profile={image.profile_image_url} nick={image.nickname}/>
             </>
           ))
           }
