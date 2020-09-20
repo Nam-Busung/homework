@@ -86,7 +86,6 @@ function App() {
     setHasmore(false);
 
     let ary = new Array();
-    console.log(i);
     setTimeout(() => {
       for(let k=1; k<6;k++){
         axios
@@ -103,21 +102,26 @@ function App() {
         })
       }
 
-      console.log(i);
 
-    }, 1000)
+    }, 500)
 
   }
   const fetchImages = () => {
-    if(i==6)
-      setHasmore(false);
+    // if(i==6)
+    //   setHasmore(false);
     setTimeout(() => {
 
       axios
         .get(`https://bucketplace-coding-test.s3.amazonaws.com/cards/page_${i}.json`)
         .then(res => {
+          if(res.data[0]==null){
+            setHasmore(false);
+          }
           setImage([...images, ...res.data]);          
         })
+       
+
+        
       i++;
     }, 1000)
 
