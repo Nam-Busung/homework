@@ -103,7 +103,7 @@ function App() {
       }
 
 
-    }, 500)
+    },0)
 
   }
   const fetchImages = () => {
